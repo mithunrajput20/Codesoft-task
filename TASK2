@@ -1,0 +1,70 @@
+import java.util.*;
+public class Main
+{
+    //generating random number
+    static int generateNumber()
+    {
+        int num=(int)(Math.random()*99)+1;
+        return num;
+    }
+    
+    //guess the number
+    static int input()
+    {
+        int n;
+        Scanner s=new Scanner(System.in);
+        System.out.print("\nEnter your number between 1 to 100:");
+        n=s.nextInt();
+        return n;
+    }
+    
+    static void compare()
+    {
+        int generated=generateNumber();
+        
+        //temp variable to store number of attempts
+        int n=0;
+        System.out.println("You have only 10 attempts:");
+        
+        
+        boolean correct=false;
+        
+        //till the correct guess 
+        while(!correct &&  n!=10)
+        {    
+        int guess=input();
+        if(generated==guess)
+        {
+            System.out.println("Both numbers are equal !!\n");
+            System.out.println("You won!");
+            correct=true;
+            
+            //displaying number of rounds
+            System.out.println("Number of attempts taken : "+(n+1));
+        }
+        else if(generated>guess)
+        {
+            System.out.println("Guess is too low !! ,Try again");
+        }
+        else{
+            System.out.println("Guess is too high !! ,Try again");
+        }
+        n++;
+        
+        
+        //if all rounds completed and guess!=generated
+        if(n==10 && correct==false)
+        {
+            System.out.println("You are run of attempts!!\n");
+            System.out.println("Correct answer is :"+generated);
+        }
+        
+        }
+    }
+	public static void main(String[] args) {
+	    
+		Main obj=new Main();
+		
+		obj.compare();
+	}
+}
