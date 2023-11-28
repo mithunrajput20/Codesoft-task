@@ -1,0 +1,90 @@
+import java.util.*;
+class Main{
+    
+    //input Marks:
+    void inputMarks(int arr[],int n)
+    {
+        Scanner s=new Scanner(System.in);
+        System.out.println("Enter marks out of 100 for "+n+" subjects :");
+        for(int i=0;i<n;i++)
+        {
+            arr[i]=s.nextInt();
+        }
+    }
+    
+    //printing marks:
+    void marks(int arr[],int n)
+    {
+        System.out.print("Marks are: ");
+        for(int i=0;i<n;i++)
+        {
+            System.out.print(arr[i]+" ");
+        }
+        System.out.println();
+    }
+    
+    //calculation of sum 
+    double sum(int arr[],int n)
+    {
+        double sum=0;
+        for(int i=0;i<n;i++)
+        {
+            sum+=arr[i];
+        }
+        return sum;
+    }
+    
+    //Average percentage:
+    double  percentage(int arr[],int n)
+    {
+        double TotSum=sum(arr,n);
+        double avgPer=TotSum/n;
+        
+        return avgPer;
+    }
+    
+    //grade calculation:
+    void grade(int arr[],int n)
+    {
+        double avg=percentage(arr,n);    
+        if(avg<=100 && avg>89)
+        {
+            System.out.println("A Grade");
+        }
+        else if(avg<=89 && avg>70)
+        {
+            System.out.println("B Grade");
+        }
+        else if(avg<=70 && avg>60)
+        {
+            System.out.println("C Grade");
+        }
+        else{
+            System.out.println("D Grade");
+        }
+    }
+    
+    //display:
+    void dispay(int arr[],int n)
+    {
+        System.out.println("Total Marks : "+sum(arr,n));
+        System.out.println("Averge Percentage Marks : "+percentage(arr,n));
+        grade(arr,n);
+    }
+    
+    //main method
+    public static void main(String args[])
+    {
+        int n;
+        Scanner s=new Scanner(System.in);
+        System.out.print("Enter the no. of subjects: ");
+        n=s.nextInt();
+        int arr[]=new int[n];
+        
+        Main obj=new Main();
+        obj.inputMarks(arr,n);
+        obj.marks(arr,n);
+        obj.dispay(arr,n);
+        
+    }
+}
